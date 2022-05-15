@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import { ThemeProps } from 'theme';
 
 export const GlobalStyle = createGlobalStyle`
-                      * {
+ * {
     margin: 0;
     padding: 0;
     position: relative;
@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body {
     font: normal 300 14px/1 ${(p: ThemeProps) => p.theme.fonts.mainFont};
+    background-color: ${(p: ThemeProps) => p.theme.colors.dark2};
   }
   h1,
   h2,
@@ -96,17 +97,6 @@ export const GlobalStyle = createGlobalStyle`
     &:hover {
       color: ${(p: ThemeProps) => p.theme.colors.blue2};
     }
-  }
-  .container {
-    max-width: 1600px;
-    width: 85%;
-    margin: 0 auto;
-    padding: ${(p: ThemeProps) => p.theme.paddingContainer};
-  }
-  .container-fluid {
-    width: 100%;
-    margin: 0 auto;
-    padding: ${(p: ThemeProps) => p.theme.paddingContainer};
   }
   .overflow {
     display: block;

@@ -32,6 +32,8 @@ export const theme: ThemeProviderProps = {
   paddingContainer: '100px 0',
   transition: '300ms',
   borderRadius: '0.5em',
+  headerHeight: '60px',
+  sidebarWidth: '260px',
 };
 
 export interface ThemeColors {
@@ -68,6 +70,8 @@ export interface ThemeProviderProps {
   paddingContainer: string;
   transition: string;
   borderRadius: string;
+  headerHeight: string;
+  sidebarWidth: string;
 }
 
 export interface ThemeProps {
