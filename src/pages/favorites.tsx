@@ -3,8 +3,8 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { ThemeProps } from 'theme';
 import { useState, useEffect } from 'react';
-import { MovieData, Movie } from 'models';
-import { Heading, MovieList } from 'components';
+import { MovieData } from 'models';
+import { Heading } from 'components';
 
 const Main = styled.main`
   grid-column: 2;
@@ -37,13 +37,13 @@ const Home: NextPage = () => {
 
       <Heading
         size="h1"
-        text="Top Rated Movies"
+        text="Favorite Movies"
         textAlign="left"
         topMargin={0}
         topPadding={0}
       />
 
-      {movies ? <MovieList data={movies} /> : null}
+      {/* {movies ? <MovieList data={movies} /> : null} */}
     </Main>
   );
 };

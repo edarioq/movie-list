@@ -3,32 +3,52 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { ThemeProps } from 'theme';
+import { Heading, Input } from 'components';
 
-const StyledHeader = styled.header`
+const HeaderContainer = styled.header`
   display: grid;
   grid-column: 1 / span 2;
   grid-row: 1;
-  grid-template-columns: 150px auto;
+  grid-template-columns: 300px auto;
   height: ${(p: ThemeProps) => p.theme.headerHeight};
-  width: 100%;
-  background-color: ${(p: ThemeProps) => p.theme.colors.dark3};
+  background-color: ${(p: ThemeProps) => p.theme.colors.dark4};
   border-radius: ${(p: ThemeProps) => p.theme.borderRadius};
+  margin: 0 16px;
 `;
 
 const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
   cursor: pointer;
+`;
+const LogoText = styled.div`
+  color: ${(p: ThemeProps) => p.theme.colors.light1};
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  margin-left: 5px;
+  text-transform: lowercase;
+`;
+const LogoLetter = styled.span`
+  color: ${(p: ThemeProps) => p.theme.colors.gold1};
+`;
+
+const Search = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
 `;
 
 const LogoImage = React.forwardRef(
   ({ onClick, href }: any, ref: LegacyRef<HTMLAnchorElement>) => {
     return (
-      <a href={href} onClick={onClick} ref={ref}>
-        <Image
-          src="/images/logo-c-color.svg"
-          alt="Movie List"
-          width={150}
-          height={150}
-        />
+      <a className="flex" href={href} onClick={onClick} ref={ref}>
+        <Image src="/images/dude.svg" alt="My Movies" width={30} height={30} />
+        <LogoText>
+          Fle<LogoLetter>x</LogoLetter>
+        </LogoText>
       </a>
     );
   }
@@ -36,13 +56,16 @@ const LogoImage = React.forwardRef(
 
 export function Header() {
   return (
-    <StyledHeader>
+    <HeaderContainer>
       <Logo>
         <Link href="/" replace passHref>
           <LogoImage />
         </Link>
       </Logo>
-      <div>stuff</div>
-    </StyledHeader>
+
+      <Search>
+        <Input id="search" type="text" placeholder="Search..." />
+      </Search>
+    </HeaderContainer>
   );
 }

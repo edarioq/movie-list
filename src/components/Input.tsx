@@ -38,14 +38,14 @@ interface StyleProps extends ThemeProps {
 const InputCss = styled.input`
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 0.93em 1.2em;
+  width: 400px;
+  padding: 0.43em 1.2em;
   border: ${(p: StyleProps) =>
     `1px solid ${p.error ? p.theme.colors.red1 : 'transparent'}`};
   border-radius: ${(p: StyleProps) => p.theme.borderRadius};
   transition: ${(p: StyleProps) => p.theme.transition};
-  background-color: ${(p: StyleProps) => `${p.theme.colors.light2}`};
-  line-height: 1.2em;
+  background-color: ${(p: StyleProps) => `${p.theme.colors.dark3}`};
+  color: ${(p: StyleProps) => `${p.theme.colors.light2}`};
   text-transform: ${(p: StyleProps) =>
     p.type === 'name' ? 'capitalize' : 'none'};
   &::placeholder {
@@ -55,7 +55,6 @@ const InputCss = styled.input`
     border: 1px solid
       ${(p: StyleProps) =>
         `${p.error ? p.theme.colors.red1 : p.theme.colors.blue1}`};
-    background-color: ${(p: StyleProps) => p.theme.colors.light1};
     outline: none;
   }
   &:hover {

@@ -12,8 +12,9 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 260px auto;
   grid-template-rows: 60px auto;
-  grid-gap: 16px;
-  margin: 16px;
+  grid-column-gap: 40px;
+  grid-row-gap: 20px;
+  margin: 16px 0 16px;
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {

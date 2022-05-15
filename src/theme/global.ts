@@ -11,7 +11,9 @@ export const GlobalStyle = createGlobalStyle`
   html,
   body {
     font: normal 300 14px/1 ${(p: ThemeProps) => p.theme.fonts.mainFont};
-    background-color: ${(p: ThemeProps) => p.theme.colors.dark2};
+    color: ${(p: ThemeProps) => p.theme.colors.light1};
+    background-color: ${(p: ThemeProps) => p.theme.colors.dark3};
+    overflow: hidden;
   }
   h1,
   h2,
@@ -106,5 +108,10 @@ export const GlobalStyle = createGlobalStyle`
   }
   .relative {
     position: relative;
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

@@ -17,7 +17,7 @@ const Home: NextPage = () => {
   const [movies, setMovies] = useState<MovieData>();
 
   const getMovies = async (): Promise<{ data: MovieData }> => {
-    const data = await fetch('api/movie/top_rated');
+    const data = await fetch('api/movie/popular');
     return await data.json();
   };
 
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
 
       <Heading
         size="h1"
-        text="Top Rated Movies"
+        text="Popular Movies"
         textAlign="left"
         topMargin={0}
         topPadding={0}
