@@ -1,16 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styled from 'styled-components';
-import { ThemeProps } from 'theme';
-import { Heading, MovieList } from 'components';
+import { Main, Heading, Loading, MovieList } from 'components';
 import { useSelector } from 'react-redux';
-
-const Main = styled.main`
-  grid-column: 2;
-  grid-row: 2;
-  height: ${(p: ThemeProps) => `calc(100vh - ${p.theme.headerHeight} - 50px)`};
-  overflow: auto;
-`;
 
 const Home: NextPage = () => {
   const movies = useSelector((state: any) => {
@@ -41,7 +32,7 @@ const Home: NextPage = () => {
         topPadding={0}
       />
 
-      {movies ? <MovieList data={movies} /> : null}
+      {movies ? <MovieList data={movies} /> : <Loading />}
     </Main>
   );
 };

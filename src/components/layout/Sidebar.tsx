@@ -5,7 +5,7 @@ import { ThemeProps } from 'theme';
 import { Home, Movie, Star } from 'tabler-icons-react';
 
 const StyledSidebar = styled.nav`
-  height: ${(p: ThemeProps) => `calc(100vh - ${p.theme.headerHeight} - 50px)`};
+  height: ${(p: ThemeProps) => `calc(100vh - ${p.theme.headerHeight} - 60px)`};
   width: 260px;
   background-color: ${(p: ThemeProps) => p.theme.colors.dark4};
   border-radius: ${(p: ThemeProps) => p.theme.borderRadius};
@@ -48,7 +48,25 @@ export function Sidebar() {
         <li>
           <Link href="/" replace passHref>
             <LinkTitle className={router.pathname === '/' ? 'active' : ''}>
-              <Home /> Top Rated Movies
+              <Home /> All Movies
+            </LinkTitle>
+          </Link>
+        </li>
+        <li>
+          <Link href="/my-movies" replace passHref>
+            <LinkTitle
+              className={router.pathname === '/my-movies' ? 'active' : ''}
+            >
+              <Star /> My Movies
+            </LinkTitle>
+          </Link>
+        </li>
+        <li>
+          <Link href="/top-rated" replace passHref>
+            <LinkTitle
+              className={router.pathname === '/top-rated' ? 'active' : ''}
+            >
+              <Movie /> Top Rated Movies
             </LinkTitle>
           </Link>
         </li>
@@ -62,11 +80,11 @@ export function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link href="/my-movies" replace passHref>
+          <Link href="/upcoming" replace passHref>
             <LinkTitle
-              className={router.pathname === '/my-movies' ? 'active' : ''}
+              className={router.pathname === '/upcoming' ? 'active' : ''}
             >
-              <Star /> My Movies
+              <Movie /> Upcoming Movies
             </LinkTitle>
           </Link>
         </li>

@@ -4,7 +4,7 @@ import { MovieData, Movie } from 'models';
 import { showPoster } from 'utils';
 import styled from 'styled-components';
 import { theme, ThemeProps } from 'theme';
-import { Star } from 'tabler-icons-react';
+import { Star, FaceIdError } from 'tabler-icons-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addMovie } from '../state/favorites.slice';
 
@@ -79,6 +79,12 @@ const MovieInfo = styled.div`
   color: ${(p: StyleProps) => p.theme.colors.light3};
   text-align: left;
 `;
+const PosterFallback = styled.div`
+  width: 200px;
+  height: 300px;
+  position: relative;
+  background-color: ${(p: ThemeProps) => p.theme.colors.dark4};
+`;
 
 export function MovieList(props: Props) {
   const [movies] = useState<MovieData>(props.data);
@@ -104,12 +110,22 @@ export function MovieList(props: Props) {
         ? movies.results.map((m) => {
             return (
               <MovieCard key={m.id} onClick={() => starMovie(m, favorites)}>
-                <MoviePoster
-                  src={showPoster(m.poster_path)}
-                  width={'200px'}
-                  height={'300px'}
-                  alt={m.title}
-                />
+                {m.poster_path ? (
+                  <MoviePoster
+                    src={showPoster(m.poster_path)}
+                    width={'200px'}
+                    height={'300px'}
+                    alt={m.title}
+                  />
+                ) : (
+                  <PosterFallback>
+                    <FaceIdError
+                      className="absolute-center"
+                      size="50"
+                      color={theme.colors.light3}
+                    />
+                  </PosterFallback>
+                )}
                 <MovieTitle className="overflow">{m.title}</MovieTitle>
                 <MovieInfo col={'1fr'}>Released: {m.release_date}</MovieInfo>
                 <MovieInfo col={'1fr'}>

@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const [movies, setMovies] = useState<MovieData>();
 
   const getMovies = async (): Promise<{ data: MovieData }> => {
-    const data = await fetch('api/movie/discover');
+    const data = await fetch('api/movie/top_rated');
     return await data.json();
   };
 
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   return (
     <Main>
       <Head>
-        <title>All Movies - Flex</title>
+        <title>Top Rated Movies - Flex</title>
         <meta
           name="description"
           content="Friendly SEO description goes here."
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
 
       <Heading
         size="h1"
-        text="All Movies"
+        text="Top Rated Movies"
         textAlign="left"
         topMargin={0}
         topPadding={0}
