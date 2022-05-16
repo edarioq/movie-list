@@ -34,6 +34,7 @@ export const theme: ThemeProviderProps = {
   borderRadius: '0.5em',
   headerHeight: '60px',
   sidebarWidth: '260px',
+  breakpoint: '768px',
 };
 
 export interface ThemeColors {
@@ -72,6 +73,7 @@ export interface ThemeProviderProps {
   borderRadius: string;
   headerHeight: string;
   sidebarWidth: string;
+  breakpoint: string;
 }
 
 export interface ThemeProps {

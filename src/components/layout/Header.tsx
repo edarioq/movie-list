@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { ThemeProps } from 'theme';
-import { Heading, Input } from 'components';
+import { Input } from 'components';
 
 const HeaderContainer = styled.header`
   display: grid;
@@ -14,6 +14,9 @@ const HeaderContainer = styled.header`
   background-color: ${(p: ThemeProps) => p.theme.colors.dark4};
   border-radius: ${(p: ThemeProps) => p.theme.borderRadius};
   margin: 0 16px;
+  @media screen and (max-width: ${(p: ThemeProps) => p.theme.breakpoint}) {
+    grid-template-columns: auto auto;
+  }
 `;
 
 const Logo = styled.div`
@@ -54,6 +57,8 @@ const LogoImage = React.forwardRef(
   }
 );
 
+LogoImage.displayName = 'LogoImage';
+
 export function Header() {
   return (
     <HeaderContainer>
@@ -64,7 +69,12 @@ export function Header() {
       </Logo>
 
       <Search>
-        <Input id="search" type="text" placeholder="Search..." />
+        <Input
+          id="search"
+          type="text"
+          placeholder="Search..."
+          readOnly={true}
+        />
       </Search>
     </HeaderContainer>
   );

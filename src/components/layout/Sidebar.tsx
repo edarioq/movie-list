@@ -4,14 +4,6 @@ import styled from 'styled-components';
 import { ThemeProps } from 'theme';
 import { Home, Movie, Star } from 'tabler-icons-react';
 
-const StyledSidebar = styled.nav`
-  height: ${(p: ThemeProps) => `calc(100vh - ${p.theme.headerHeight} - 60px)`};
-  width: 260px;
-  background-color: ${(p: ThemeProps) => p.theme.colors.dark4};
-  border-radius: ${(p: ThemeProps) => p.theme.borderRadius};
-  z-index: 100;
-  margin-left: 16px;
-`;
 const LinkTitle = styled.a`
   display: grid;
   grid-template-columns: 25px auto;
@@ -39,6 +31,24 @@ const LinkTitle = styled.a`
   }
 `;
 
+const StyledSidebar = styled.nav`
+  height: ${(p: ThemeProps) => `calc(100vh - ${p.theme.headerHeight} - 60px)`};
+  width: 260px;
+  background-color: ${(p: ThemeProps) => p.theme.colors.dark4};
+  border-radius: ${(p: ThemeProps) => p.theme.borderRadius};
+  z-index: 100;
+  margin-left: 16px;
+  @media screen and (max-width: ${(p: ThemeProps) => p.theme.breakpoint}) {
+    width: 60px;
+    cursor: pointer;
+    ${LinkTitle} {
+      span {
+        display: none;
+      }
+    }
+  }
+`;
+
 export function Sidebar() {
   const router = useRouter();
 
@@ -48,7 +58,8 @@ export function Sidebar() {
         <li>
           <Link href="/" replace passHref>
             <LinkTitle className={router.pathname === '/' ? 'active' : ''}>
-              <Home /> All Movies
+              <Home />
+              <span>All Movies</span>
             </LinkTitle>
           </Link>
         </li>
@@ -57,7 +68,7 @@ export function Sidebar() {
             <LinkTitle
               className={router.pathname === '/my-movies' ? 'active' : ''}
             >
-              <Star /> My Movies
+              <Star /> <span>My Movies</span>
             </LinkTitle>
           </Link>
         </li>
@@ -66,7 +77,7 @@ export function Sidebar() {
             <LinkTitle
               className={router.pathname === '/top-rated' ? 'active' : ''}
             >
-              <Movie /> Top Rated Movies
+              <Movie /> <span>Top Rated Movies</span>
             </LinkTitle>
           </Link>
         </li>
@@ -75,7 +86,7 @@ export function Sidebar() {
             <LinkTitle
               className={router.pathname === '/popular' ? 'active' : ''}
             >
-              <Movie /> Popular Movies
+              <Movie /> <span>Popular Movies</span>
             </LinkTitle>
           </Link>
         </li>
@@ -84,7 +95,7 @@ export function Sidebar() {
             <LinkTitle
               className={router.pathname === '/upcoming' ? 'active' : ''}
             >
-              <Movie /> Upcoming Movies
+              <Movie /> <span>Upcoming Movies</span>
             </LinkTitle>
           </Link>
         </li>

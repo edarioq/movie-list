@@ -60,6 +60,9 @@ const InputCss = styled.input`
   &:hover {
     cursor: ${(p: StyleProps) => (p.cursor ? p.cursor : 'auto')};
   }
+  @media screen and (max-width: ${(p: ThemeProps) => p.theme.breakpoint}) {
+    width: 100%;
+  }
 `;
 
 export function Input(props: Props) {

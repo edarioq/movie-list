@@ -21,6 +21,9 @@ const Container = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
   grid-gap: 50px;
+  @media screen and (max-width: ${(p: ThemeProps) => p.theme.breakpoint}) {
+    width: 85%;
+  }
 `;
 const MovieStar = styled.div`
   opacity: 0;

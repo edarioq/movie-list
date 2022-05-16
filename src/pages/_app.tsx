@@ -1,7 +1,6 @@
 import 'normalize.css/normalize.css';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'theme';
-import { GlobalStyle } from 'theme';
+import { theme, GlobalStyle, ThemeProps } from 'theme';
 import { Header, Sidebar } from '../components';
 import { Provider } from 'react-redux';
 import store from '../state/store';
@@ -15,6 +14,9 @@ const Container = styled.div`
   grid-column-gap: 40px;
   grid-row-gap: 20px;
   margin: 16px 0 16px;
+  @media screen and (max-width: ${(p: ThemeProps) => p.theme.breakpoint}) {
+    grid-template-columns: 80px 1fr;
+  }
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
