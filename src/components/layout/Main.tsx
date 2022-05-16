@@ -7,4 +7,5 @@ export const Main = styled.main`
   height: ${(p: ThemeProps) => `calc(100vh - ${p.theme.headerHeight} - 60px)`};
   overflow: auto;
   position: relative;
+  width: calc(100% - 16px);
 `;

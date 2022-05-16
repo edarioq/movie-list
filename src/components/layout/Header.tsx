@@ -74,6 +74,7 @@ export function Header() {
           type="text"
           placeholder="Search..."
           readOnly={true}
+          cursor={'not-allowed'}
         />
       </Search>
     </HeaderContainer>
