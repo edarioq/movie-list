@@ -13,9 +13,14 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    getMovies().then((res) => {
-      setMovies(res.data);
-    });
+    getMovies()
+      .then((res) => {
+        setMovies(res.data);
+      })
+      .catch((err) => {
+        alert('There was an error loading movies. Please try again!');
+        return err;
+      });
   }, []);
 
   return (

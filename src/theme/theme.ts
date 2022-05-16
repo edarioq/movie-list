@@ -1,4 +1,4 @@
-const lightTheme: ThemeColors = {
+const darkTheme: ThemeColors = {
   light1: '#ffffff',
   light2: '#f1f1f1',
   light3: '#c0b7b1',
@@ -27,7 +27,7 @@ const fonts: ThemeFonts = {
 
 export const theme: ThemeProviderProps = {
   fonts: fonts,
-  colors: lightTheme,
+  colors: darkTheme,
   breakpoints: null,
   paddingContainer: '100px 0',
   transition: '150ms',
