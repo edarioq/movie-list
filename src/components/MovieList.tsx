@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { MovieData } from 'models';
+import { MovieData, Movie } from 'models';
 import { showPoster } from 'utils';
 import styled from 'styled-components';
 import { theme, ThemeProps } from 'theme';
 import { Star } from 'tabler-icons-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addMovie } from '../state/favorites.slice';
 
 interface Props {
   data: MovieData;
@@ -12,6 +14,7 @@ interface Props {
 
 interface StyleProps extends ThemeProps {
   col: string;
+  isFavorite?: any;
 }
 
 const Container = styled.section`
@@ -28,6 +31,12 @@ const MovieStar = styled.div`
   z-index: 10;
   width: 20px;
   height: 20px;
+  ${(p: StyleProps) =>
+    p.isFavorite
+      ? `
+    opacity: 1;
+  `
+      : null}
   &:after {
     content: '';
     position: absolute;
@@ -73,21 +82,28 @@ const MovieInfo = styled.div`
 
 export function MovieList(props: Props) {
   const [movies] = useState<MovieData>(props.data);
+  const favorites = useSelector((state: any) => state.favorites);
+  const dispatch = useDispatch();
 
-  const starMovie = (m: any) => {
-    console.debug(m);
+  const starMovie = (mov: Movie, fav: Movie[]) => {
+    if (mov && !isFavorite(mov, fav)) {
+      dispatch(addMovie(mov));
+    }
   };
 
-  useEffect(() => {
-    console.debug(movies);
-  }, [movies]);
+  const isFavorite = (mov: Movie, fav: Movie[]) => {
+    if (!fav) {
+      return false;
+    }
+    return fav.find((m) => m.id == mov.id);
+  };
 
   return (
     <Container>
-      {movies
+      {movies.results.length
         ? movies.results.map((m) => {
             return (
-              <MovieCard key={m.id} onClick={() => starMovie(m)}>
+              <MovieCard key={m.id} onClick={() => starMovie(m, favorites)}>
                 <MoviePoster
                   src={showPoster(m.poster_path)}
                   width={'200px'}
@@ -100,13 +116,21 @@ export function MovieList(props: Props) {
                   Score: {m.vote_average} | Language:{' '}
                   {m.original_language.toUpperCase()}
                 </MovieInfo>
-                <MovieStar>
-                  <Star size="20" color={theme.colors.gold1} />
+                <MovieStar col={''} isFavorite={isFavorite(m, favorites)}>
+                  <Star
+                    size="20"
+                    color={theme.colors.gold1}
+                    fill={
+                      isFavorite(m, favorites)
+                        ? theme.colors.gold1
+                        : 'transparent'
+                    }
+                  />
                 </MovieStar>
               </MovieCard>
             );
           })
-        : null}
+        : 'There are no movies to display'}
     </Container>
   );
 }

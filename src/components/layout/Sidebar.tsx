@@ -62,9 +62,9 @@ export function Sidebar() {
           </Link>
         </li>
         <li>
-          <Link href="/favorites" replace passHref>
+          <Link href="/my-movies" replace passHref>
             <LinkTitle
-              className={router.pathname === '/favorites' ? 'active' : ''}
+              className={router.pathname === '/my-movies' ? 'active' : ''}
             >
               <Star /> My Movies
             </LinkTitle>
