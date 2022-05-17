@@ -108,11 +108,15 @@ export function MovieList(props: Props) {
   };
 
   return (
-    <Container>
+    <Container data-testid="container">
       {movies.results.length
         ? movies.results.map((m) => {
             return (
-              <MovieCard key={m.id} onClick={() => starMovie(m, favorites)}>
+              <MovieCard
+                data-testid="card"
+                key={m.id}
+                onClick={() => starMovie(m, favorites)}
+              >
                 {m.poster_path ? (
                   <MoviePoster
                     src={showPoster(m.poster_path)}

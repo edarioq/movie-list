@@ -28,7 +28,8 @@
       "state/*": ["./src/state/*"],
       "theme/*": ["./src/components/*"],
       "utils/*": ["./src/utils/*"]
-    }
+    },
+    "types": ["jest"]
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
